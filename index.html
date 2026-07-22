@@ -94,3 +94,129 @@
       position: fixed;
       top: 0;
       left: 0;
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán đơn hàng</title>
+  <style>
+    /* Kiểu dáng cho nút "Mua ngay" */
+    .btn-buy {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-buy:hover {
+      background-color: #0056b3;
+    }
+
+    /* Khung Modal (Ẩn mặc định) */
+    .modal-overlay {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Hộp nội dung Modal */
+    .modal-content {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Ảnh mã QR */
+    .qr-image {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    /* Thông tin STK */
+    .payment-info {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Nút đóng [X] */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+    }
+    .close-btn:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nút Mua ngay -->
+  <button class="btn-buy" onclick="openPaymentModal()">Mua ngay</button>
+
+  <!-- Popup hiện QR và STK -->
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+      
+      <h3 style="margin-top: 0; color: #333;">Thanh toán chuyển khoản</h3>
+      <p style="font-size: 13px; color: #666; margin-bottom: 0;">Quét mã QR hoặc chuyển khoản theo thông tin bên dưới</p>
+      
+      <!-- Ảnh QR Code của bạn -->
+      <img src="qr-cua-ban.jpg" alt="Mã QR Thanh Toán" class="qr-image">
+
+      <!-- Thông tin tài khoản -->
+      <div class="payment-info">
+        <p style="margin: 0;"><strong>Chủ tài khoản:</strong> NGUYEN PHUONG THAO</p>
+        <p style="margin: 4px 0 0 0;"><strong>Số tài khoản:</strong> <span style="color: #d9534f; font-size: 16px; font-weight: bold;">0984112107</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Hàm mở popup thanh toán
+    function openPaymentModal() {
+      document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+    // Hàm đóng popup
+    function closePaymentModal() {
+      document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    // Đóng popup khi bấm ra ngoài hộp thoại
+    window.onclick = function(event) {
+      const modal = document.getElementById('paymentModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
