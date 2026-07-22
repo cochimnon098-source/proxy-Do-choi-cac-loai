@@ -907,3 +907,131 @@ print(key)  # Ví dụ: eaoi123
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Gói Dịch Vụ</title>
+  <style>
+    /* Reset CSS cơ bản */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Nền tổng thể trang web (Màu tối) */
+    body {
+      background-color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Container chứa danh sách các gói */
+    .package-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px; /* Độ rộng tối đa cho màn hình điện thoại/máy tính */
+    }
+
+    /* Thiết lập từng thẻ gói dịch vụ (Card) */
+    .package-card {
+      background-color: #1e293b; /* Màu nền của thẻ */
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+    }
+
+    /* Tiêu đề gói */
+    .package-title {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    /* Giá tiền */
+    .package-price {
+      color: #00a8ff; /* Màu xanh lá/xanh dương sáng */
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    /* Nút Mua Ngay */
+    .buy-btn {
+      background-color: #0072ce;
+      color: #ffffff;
+      border: none;
+      padding: 12px 0;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    /* Hiệu ứng khi di chuột hoặc nhấn vào nút */
+    .buy-btn:hover {
+      background-color: #005bb5;
+    }
+
+    .buy-btn:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="package-container">
+
+    <!-- Gói 1 -->
+    <div class="package-card">
+      <h3 class="package-title">Gói mở file ADR iOS</h3>
+      <div class="package-price">30.000đ</div>
+      <button class="buy-btn" onclick="selectPackage('Gói mở file ADR iOS')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 2 -->
+    <div class="package-card">
+      <h3 class="package-title">Gói mù Aim</h3>
+      <div class="package-price">50.000đ</div>
+      <button class="buy-btn" onclick="selectPackage('Gói mù Aim')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 3 -->
+    <div class="package-card">
+      <h3 class="package-title">Gói mù key hack và chỉ tận nơi</h3>
+      <div class="package-price">30.000đ</div>
+      <button class="buy-btn" onclick="selectPackage('Gói mù key hack và chỉ tận nơi')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 4 -->
+    <div class="package-card">
+      <h3 class="package-title">Gói mù bất kì</h3>
+      <div class="package-price">30.000đ</div>
+      <button class="buy-btn" onclick="selectPackage('Gói mù bất kì')">Mua Ngay</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Hàm xử lý sự kiện khi bấm nút Mua Ngay
+    function selectPackage(packageName) {
+      alert("Bạn đã chọn: " + packageName);
+      // Bạn có thể chuyển hướng sang trang thanh toán hoặc mở Modal xử lý tại đây
+    }
+  </script>
+
+</body>
+</html>
