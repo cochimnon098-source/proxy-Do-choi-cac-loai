@@ -1035,3 +1035,50 @@ print(key)  # Ví dụ: eaoi123
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Toán Gói Dịch Vụ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Thẻ 1 -->
+    <div class="card">
+      <h3 class="title">Gói Mở File ADR iOS</h3>
+      <div class="price">30.000đ</div>
+      <button class="btn" onclick="selectPackage('Gói Mở File ADR iOS')">Mua Ngay</button>
+    </div>
+
+    <!-- Thẻ 2 -->
+    <div class="card">
+      <h3 class="title">Gói Aim Đặc Biệt</h3>
+      <div class="price">50.000đ</div>
+      <button class="btn" onclick="selectPackage('Gói Aim Đặc Biệt')">Mua Ngay</button>
+    </div>
+
+    <!-- Thẻ 3 -->
+    <div class="card">
+      <h3 class="title">Gói Hỗ Trợ Tận Nơi</h3>
+      <div class="price">30.000đ</div>
+      <button class="btn" onclick="selectPackage('Gói Hỗ Trợ Tận Nơi')">Mua Ngay</button>
+    </div>
+
+    <!-- Thẻ 4 -->
+    <div class="card">
+      <h3 class="title">Gói Bất Kỳ</h3>
+      <div class="price">30.000đ</div>
+      <button class="btn" onclick="selectPackage('Gói Bất Kỳ')">Mua Ngay</button>
+    </div>
+  </div>
+
+  <script>
+    function selectPackage(packageName) {
+      alert("Bạn đã chọn: " + packageName);
+    }
+  </script>
+</body>
+</html>
