@@ -1082,3 +1082,195 @@ print(key)  # Ví dụ: eaoi123
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Toán Gói Dịch Vụ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- SECTION 1: DANH SÁCH SẢN PHẨM -->
+    <h2 class="section-title">Danh Sách Dịch Vụ</h2>
+    
+    <div class="card">
+      <h3 class="product-title">AimBody</h3>
+      <div class="price">250.000đ</div>
+      <button class="btn btn-primary" onclick="buyProduct('AimBody')">Mua ngay</button>
+    </div>
+
+    <div class="card">
+      <h3 class="product-title">Fixlag</h3>
+      <div class="price">150.000đ</div>
+      <button class="btn btn-primary" onclick="buyProduct('Fixlag')">Mua ngay</button>
+    </div>
+
+    <!-- SECTION 2: BẢNG THÔNG TIN THANH TOÁN -->
+    <div class="card payment-box">
+      <h3>Thông Tin Thanh Toán</h3>
+      <p><strong>Ngân hàng:</strong> ZaloPay / MBBank</p>
+      <p><strong>Số tài khoản:</strong> 098xxxxxxx</p>
+      <p><strong>Chủ tài khoản:</strong> NGUYEN VAN A</p>
+      
+      <!-- Khung hiển thị mã QR -->
+      <div class="qr-code">
+        <p>[ Khung Mã QR Thanh Toán ]</p>
+      </div>
+    </div>
+
+    <!-- SECTION 3: THÔNG BÁO GIAO DỊCH TRẠNG THÁI -->
+    <div class="card success-box">
+      <div class="check-icon">✓</div>
+      <h3>Đặt hàng / Giao dịch thành công!</h3>
+      <p>Cảm ơn bạn đã mua hàng. Vui lòng liên hệ Zalo để nhận trợ giúp nhanh nhất.</p>
+      <a href="https://zalo.me" target="_blank" class="btn btn-zalo">Nắn Zalo Trợ Giúp</a>
+    </div>
+
+    <!-- SECTION 4: Ô XÁC THỰC KEY / TOKEN -->
+    <div class="card">
+      <h3>Xác Thực Key & Mã Dịch Vụ</h3>
+      <input type="text" id="keyInput" class="input-field" placeholder="Nhập Token / Key của bạn...">
+      <button class="btn btn-success" onclick="verifyKey()">Xác Thực & Tải File</button>
+    </div>
+
+  </div>
+
+  <script>
+    function buyProduct(name) {
+      alert("Bạn đã chọn: " + name + ". Vui lòng chuyển khoản theo thông tin bên dưới.");
+    }
+
+    function verifyKey() {
+      const key = document.getElementById('keyInput').value;
+      if (key.trim() === "") {
+        alert("Vui lòng nhập Key trước khi kiểm tra!");
+      } else {
+        alert("Đang kiểm tra Key: " + key);
+      }
+    }
+  </script>
+</body>
+</html>
+/* Thiết lập giao diện tối (Dark Theme) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #0b1329;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 8px;
+  color: #38bdf8;
+}
+
+/* Kiểu dáng các ô Card */
+.card {
+  background-color: #172554;
+  border: 1px solid #1e3a8a;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #38bdf8;
+  margin-bottom: 14px;
+}
+
+/* Các loại Nút bấm */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn-zalo {
+  display: block;
+  text-decoration: none;
+  background-color: #0284c7;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.btn-success {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+/* Khung hiển thị thanh toán & QR */
+.payment-box p {
+  margin: 8px 0;
+  font-size: 15px;
+  text-align: left;
+}
+
+.qr-code {
+  margin-top: 15px;
+  padding: 30px;
+  background-color: #0f172a;
+  border: 2px dashed #38bdf8;
+  border-radius: 8px;
+  color: #94a3b8;
+}
+
+/* Bảng thông báo thành công */
+.success-box {
+  background-color: #064e3b;
+  border-color: #047857;
+}
+
+.check-icon {
+  font-size: 36px;
+  color: #4ade80;
+  margin-bottom: 8px;
+}
+
+/* Ô nhập liệu Input */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: #ffffff;
+  margin: 12px 0;
+  outline: none;
+}
