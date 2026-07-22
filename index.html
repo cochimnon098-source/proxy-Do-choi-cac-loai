@@ -220,3 +220,216 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProxyVip - Hệ Thống Bán Key Pro</title>
+  <style>
+    /* Reset & Font */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a; /* Màu nền tối */
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Card gói dịch vụ */
+    .package-card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    .package-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #f8fafc;
+    }
+
+    .package-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: #38bdf8; /* Màu xanh sáng giá tiền */
+      margin-bottom: 16px;
+    }
+
+    /* Nút Mua Ngay */
+    .btn-buy {
+      width: 100%;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-buy:hover {
+      background-color: #0369a1;
+    }
+
+    /* Modal Popup */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      color: #0f172a;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748b;
+    }
+
+    .qr-image {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 8px;
+      margin: 12px 0;
+    }
+
+    .payment-info {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .payment-info strong {
+      color: #0f172a;
+    }
+
+    .highlight-stk {
+      color: #d97706;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .highlight-price {
+      color: #0284c7;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Gói 1 Ngày -->
+    <div class="package-card">
+      <div class="package-title">Gói 1 Ngày</div>
+      <div class="package-price">30.000đ</div>
+      <button class="btn-buy" onclick="openPayment('Gói 1 Ngày', '30.000đ')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 1 Tuần -->
+    <div class="package-card">
+      <div class="package-title">Gói 1 Tuần</div>
+      <div class="package-price">60.000đ</div>
+      <button class="btn-buy" onclick="openPayment('Gói 1 Tuần', '60.000đ')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 1 Tháng -->
+    <div class="package-card">
+      <div class="package-title">Gói 1 Tháng</div>
+      <div class="package-price">120.000đ</div>
+      <button class="btn-buy" onclick="openPayment('Gói 1 Tháng', '120.000đ')">Mua Ngay</button>
+    </div>
+
+    <!-- Gói 1 Năm -->
+    <div class="package-card">
+      <div class="package-title">Gói 1 Năm</div>
+      <div class="package-price">250.000đ</div>
+      <button class="btn-buy" onclick="openPayment('Gói 1 Năm', '250.000đ')">Mua Ngay</button>
+    </div>
+  </div>
+
+  <!-- Modal Thanh Toán -->
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePayment()">&times;</span>
+      <h3 style="margin-bottom: 4px;">Thanh Toán Chuyển Khoản</h3>
+      <p id="selectedPackage" style="font-size: 14px; color: #64748b;"></p>
+      
+      <!-- LƯU Ý: Thay 'qr-code.jpg' bằng tên file ảnh QR của bạn -->
+      <img src="qr-code.jpg" alt="Mã QR Thanh Toán" class="qr-image">
+
+      <div class="payment-info">
+        <p><strong>Chủ tài khoản:</strong> NGUYEN PHUONG THAO</p>
+        <p><strong>Số tài khoản:</strong> <span class="highlight-stk">0984112107</span></p>
+        <p><strong>Số tiền:</strong> <span id="modalPrice" class="highlight-price">0đ</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPayment(packageName, price) {
+      document.getElementById('selectedPackage').innerText = 'Bạn đang chọn: ' + packageName;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+    function closePayment() {
+      document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    // Đóng khi click ra ngoài hộp thoại
+    window.onclick = function(event) {
+      const modal = document.getElementById('paymentModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
