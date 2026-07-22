@@ -1399,7 +1399,7 @@ body {
 
     <!-- Nút Mua Hàng -->
     <div class="card">
-        <h3>Gói 1 Ngày</h3>
+        <h3>Gói key hack hoặc prx</h3>
         <div class="price">30.000đ</div>
         <button class="btn-buy" onclick="openPaymentModal('30.000đ', 'proxy 1 ngay')">Mua Ngay</button>
     </div>
@@ -1407,7 +1407,7 @@ body {
     <!-- Khung Popup Thanh Toán -->
     <div class="modal-overlay" id="paymentModal">
         <div class="modal-content">
-            <div class="modal-title">Thanh Toán: Gói 1 Ngày</div>
+            <div class="modal-title">Thanh Toán: Gói key Ngày</div>
             <p style="font-size: 12px; color: #94a3b8; margin: 0;">Quét mã QR để thanh toán tự động</p>
 
             <!-- Mã QR của bạn -->
@@ -1417,11 +1417,11 @@ body {
 
             <!-- Bảng thông tin chi tiết -->
             <div class="info-box">
-                <div>Ngân hàng / Ví: <b>MBBank / ZaloPay</b></div>
+                <div>Ngân hàng / Ví: <b>ZaloPay</b></div>
                 <div>Chủ TK: <b>NGUYEN PHUONG THAO</b></div>
                 <div>Số TK: <b class="highlight">0984112107</b></div>
-                <div>Số tiền: <b class="highlight" id="modalAmount">30.000đ</b></div>
-                <div>Nội dung CK: <b class="highlight" id="modalMemo">proxy 1 ngay</b></div>
+                <div>Số tiền: <b class="highlight" id="modalAmount"></b></div>
+                <div>Nội dung CK: <b class="highlight" id="modalMemo"></b></div>
             </div>
 
             <button class="btn-close" onclick="closePaymentModal()">Đóng / Hủy</button>
@@ -1433,7 +1433,7 @@ body {
             document.getElementById('modalAmount').innerText = price;
             document.getElementById('modalMemo').innerText = memo;
 
-            // Link QR tĩnh lấy từ ngân hàng MBBank với số TK 0984112107
+            // Link QR tĩnh lấy từ ngân hàng ZaloPay với số TK 0984112107
             document.getElementById('qrImage').src = "https://img.vietqr.io/image/MB-0984112107-compact2.png?amount=30000&addInfo=" + encodeURIComponent(memo) + "&accountName=NGUYEN%20PHUONG%20THAO";
 
             document.getElementById('paymentModal').style.display = 'flex';
