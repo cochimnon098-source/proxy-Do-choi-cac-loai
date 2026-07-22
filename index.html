@@ -814,3 +814,96 @@ print(key)  # Ví dụ: eaoi123
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xử lý Thanh Toán</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f4f6f8; }
+
+    /* Container chính */
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+    
+    /* Giao diện 1: Form mua hàng */
+    .btn-buy { background: #007bff; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.2s; }
+    .btn-buy:hover { background: #0056b3; }
+    .btn-buy:disabled { background: #cccccc; cursor: not-allowed; }
+
+    /* Màn hình chờ (Loading) */
+    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #007bff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; display: none; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* Giao diện 2: Thành công (Ẩn mặc định) */
+    #success-screen { display: none; }
+    .success-icon { width: 60px; height: 60px; background: #28a745; color: white; font-size: 32px; line-height: 60px; border-radius: 50%; margin: 0 auto 15px; }
+    .btn-back { margin-top: 20px; background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    
+    <!-- GIAO DIỆN 1: MUA HÀNG -->
+    <div id="checkout-screen">
+      <h2 style="margin-bottom: 10px;">Đơn hàng của bạn</h2>
+      <p style="color: #666; margin-bottom: 20px;">Sản phẩm: Áo Thun Premium<br>Giá: 250.000đ</p>
+      
+      <!-- Vùng hiển thị loading khi đang xử lý -->
+      <div id="loader" class="spinner"></div>
+
+      <button id="buy-btn" class="btn-buy" onclick="handlePayment()">Mua Ngay</button>
+    </div>
+
+    <!-- GIAO DIỆN 2: THANH TOÁN THÀNH CÔNG -->
+    <div id="success-screen">
+      <div class="success-icon">✓</div>
+      <h2 style="color: #28a745; margin-bottom: 10px;">Thanh Toán Thành Công!</h2>
+      <p style="color: #666; font-size: 14px;">Mã đơn hàng: <strong id="order-id">#12345</strong></p>
+      <p style="color: #666; font-size: 14px; margin-top: 5px;">Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi.</p>
+      
+      <button class="btn-back" onclick="resetForm()">Quay lại trang chủ</button>
+    </div>
+
+  </div>
+
+  <script>
+    function handlePayment() {
+      const buyBtn = document.getElementById('buy-btn');
+      const loader = document.getElementById('loader');
+
+      // 1. Vô hiệu hóa nút và hiện hiệu ứng chờ (loading)
+      buyBtn.disabled = true;
+      buyBtn.innerText = "Đang xử lý...";
+      loader.style.display = "block";
+
+      // 2. Giả lập gọi API xử lý thanh toán (mất 2 giây)
+      setTimeout(function() {
+        // Tạo mã đơn hàng ngẫu nhiên
+        const randomOrderId = '#' + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById('order-id').innerText = randomOrderId;
+
+        // 3. Ẩn màn hình mua hàng, hiện màn hình thành công
+        document.getElementById('checkout-screen').style.display = 'none';
+        document.getElementById('success-screen').style.display = 'block';
+      }, 2000); // 2000ms = 2 giây
+    }
+
+    // Hàm để quay lại ban đầu (nếu muốn thử lại)
+    function resetForm() {
+      document.getElementById('checkout-screen').style.display = 'block';
+      document.getElementById('success-screen').style.display = 'none';
+      
+      const buyBtn = document.getElementById('buy-btn');
+      const loader = document.getElementById('loader');
+      
+      buyBtn.disabled = false;
+      buyBtn.innerText = "Mua Ngay";
+      loader.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
