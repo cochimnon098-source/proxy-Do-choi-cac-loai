@@ -433,3 +433,174 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProxyVip - Hệ Thống Bán Key Pro</title>
+  <style>
+    /* Reset & Styling Cơ Bản */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a; /* Nền tối */
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      padding: 20px 15px;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Định dạng chung cho các Card */
+    .card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #38bdf8; /* Màu xanh sáng tiêu đề */
+      margin-bottom: 12px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    /* Ô nhập dữ liệu (Input) */
+    .input-field {
+      width: 100%;
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px;
+      color: #ffffff;
+      font-size: 15px;
+      text-align: center;
+      outline: none;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #38bdf8;
+    }
+
+    .input-field::placeholder {
+      color: #64748b;
+    }
+
+    /* Nút bấm (Button) */
+    .btn {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Nút màu xanh dương */
+    .btn-blue {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+    .btn-blue:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Nút màu xanh lá */
+    .btn-green {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+    .btn-green:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Card 1: Tải Cấu Hình Android -->
+    <div class="card">
+      <h2 class="card-title">ProxyVip - Tải Cấu Hình Android</h2>
+      <p class="card-subtitle">Nhập Token / Key của bạn để tiếp tục:</p>
+
+      <input type="text" id="androidKeyInput" class="input-field" placeholder="Nhập Token / Key...">
+      <button class="btn btn-blue" onclick="downloadAndroidConfig()">Xác Thực & Tải File Android</button>
+    </div>
+
+    <!-- Card 2: Thuê & Mua Key Proxy -->
+    <div class="card">
+      <h2 class="card-title" style="color: #38bdf8; letter-spacing: 0.5px;">THUÊ & MUA KEY PROXY</h2>
+      <p class="card-subtitle" style="margin-bottom: 0;">Tốc độ cao, ổn định, phục vụ mượt mọi nhu cầu của bạn</p>
+    </div>
+
+    <!-- Card 3: Kiểm Tra Trạng Thái Key -->
+    <div class="card">
+      <h2 class="card-title" style="color: #f8fafc; font-size: 20px;">Kiểm Tra Trạng Thái Key</h2>
+      
+      <input type="text" id="checkKeyInput" class="input-field" placeholder="Nhập mã key của bạn..." style="margin-top: 10px;">
+      <button class="btn btn-green" onclick="checkKeyStatus()">Kiểm Tra</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Xử lý nút Tải Cấu Hình Android
+    function downloadAndroidConfig() {
+      const key = document.getElementById('androidKeyInput').value.trim();
+      if (!key) {
+        alert('Vui lòng nhập Token / Key của bạn!');
+        return;
+      }
+      
+      alert('Đang xác thực Key: ' + key + ' và tải file cấu hình Android...');
+      // Bạn có thể thêm đường dẫn tải file thực tế tại đây:
+      // window.location.href = 'duong-dan-file-config.ovpn';
+    }
+
+    // Xử lý nút Kiểm Tra Key
+    function checkKeyStatus() {
+      const key = document.getElementById('checkKeyInput').value.trim();
+      if (!key) {
+        alert('Vui lòng nhập mã Key cần kiểm tra!');
+        return;
+      }
+
+      alert('Đang kiểm tra trạng thái cho Key: ' + key);
+    }
+  </script>
+
+</body>
+</html>
