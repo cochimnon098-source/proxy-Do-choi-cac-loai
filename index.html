@@ -1504,3 +1504,36 @@ body {
   overflow-y: auto; /* Cho phép cuộn nếu màn hình quá nhỏ */
   text-align: center;
 }
+// Hàm hiển thị Popup Thành công
+function showSuccessModal(generatedKey) {
+    document.querySelector('.key-box b').innerText = generatedKey;
+    document.getElementById('modal-success').style.display = 'flex';
+}
+
+// Hàm hiển thị Popup Thất bại / Hết giờ
+function showFailedModal(reason) {
+    if (reason) {
+        document.getElementById('fail-reason').innerText = reason;
+    }
+    document.getElementById('modal-failed').style.display = 'flex';
+}
+
+// Hàm đóng popup
+function closeModal(type) {
+    if (type === 'success') {
+        document.getElementById('modal-success').style.display = 'none';
+    } else {
+        document.getElementById('modal-failed').style.display = 'none';
+    }
+}
+
+// Hàm copy key khi thành công
+function copyKey() {
+    const keyText = document.querySelector('.key-box b').innerText;
+    navigator.clipboard.writeText(keyText).then(() => {
+        alert('Đã sao chép key thành công!');
+    });
+}
+
+// Ví dụ: Đặt hệ thống đếm ngược 02:59 mà chưa thanh toán -> gọi popup thất bại
+// setTimeout(() => { showFailedModal('Đã hết thời gian thanh toán mà QR!'); }, 180000);
